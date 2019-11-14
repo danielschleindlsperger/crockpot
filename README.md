@@ -8,8 +8,8 @@ import { C } from 'crockpot'
 
 
 const Component = () => (
-  <C.section>
-    <C.h1>Hello!</C.h1>
+  <C.section mt={3}>
+    <C.h1 color="white" bg="darkgrey">Hello!</C.h1>
     <C.button onClick={() => alert('BOOH')}>Click me</C.butotn>
   </C.section>
 )
