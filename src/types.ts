@@ -5,7 +5,7 @@ type GenericElementType = typeof tagNamesWithGenericProps[number]
 
 type ExtractElementType<U> = U extends React.HTMLAttributes<infer T> ? T : never
 
-type CreateStyled<
+type CreateCrockpotElement<
   Attrs extends React.HTMLAttributes<HTMLElement>
 > = React.PropsWithRef<
   React.FC<
@@ -15,87 +15,104 @@ type CreateStyled<
   >
 >
 
-export type Styled = {
-  a: CreateStyled<React.AnchorHTMLAttributes<HTMLAnchorElement>>
-  applet: CreateStyled<React.HTMLAttributes<HTMLAppletElement>>
-  area: CreateStyled<React.AreaHTMLAttributes<HTMLAreaElement>>
-  audio: CreateStyled<React.AudioHTMLAttributes<HTMLAudioElement>>
-  base: CreateStyled<React.BaseHTMLAttributes<HTMLBaseElement>>
-  basefont: CreateStyled<React.HTMLAttributes<HTMLBaseFontElement>>
-  blockquote: CreateStyled<React.BlockquoteHTMLAttributes<HTMLQuoteElement>>
-  body: CreateStyled<React.HTMLAttributes<HTMLBodyElement>>
-  br: CreateStyled<React.HTMLAttributes<HTMLBRElement>>
-  button: CreateStyled<React.ButtonHTMLAttributes<HTMLButtonElement>>
-  canvas: CreateStyled<React.CanvasHTMLAttributes<HTMLCanvasElement>>
-  caption: CreateStyled<React.HTMLAttributes<HTMLTableCaptionElement>>
-  col: CreateStyled<React.ColHTMLAttributes<HTMLTableColElement>>
-  colgroup: CreateStyled<React.ColgroupHTMLAttributes<HTMLTableColElement>>
-  data: CreateStyled<React.DataHTMLAttributes<HTMLDataElement>>
-  datalist: CreateStyled<React.HTMLAttributes<HTMLDataListElement>>
-  del: CreateStyled<React.DelHTMLAttributes<HTMLModElement>>
-  details: CreateStyled<React.DetailsHTMLAttributes<HTMLDetailsElement>>
-  dialog: CreateStyled<React.DialogHTMLAttributes<HTMLDialogElement>>
-  dir: CreateStyled<React.HTMLAttributes<HTMLDirectoryElement>>
-  div: CreateStyled<React.HTMLAttributes<HTMLDivElement>>
-  dl: CreateStyled<React.HTMLAttributes<HTMLDListElement>>
-  embed: CreateStyled<React.EmbedHTMLAttributes<HTMLEmbedElement>>
-  fieldset: CreateStyled<React.FieldsetHTMLAttributes<HTMLFieldSetElement>>
-  figcaption: CreateStyled<React.HTMLAttributes<HTMLElement>>
-  font: CreateStyled<React.HTMLAttributes<HTMLFontElement>>
-  form: CreateStyled<React.FormHTMLAttributes<HTMLFormElement>>
-  frame: CreateStyled<React.HTMLAttributes<HTMLFrameElement>>
-  frameset: CreateStyled<React.HTMLAttributes<HTMLFrameSetElement>>
-  h1: CreateStyled<React.HTMLAttributes<HTMLHeadingElement>>
-  h2: CreateStyled<React.HTMLAttributes<HTMLHeadingElement>>
-  h3: CreateStyled<React.HTMLAttributes<HTMLHeadingElement>>
-  h4: CreateStyled<React.HTMLAttributes<HTMLHeadingElement>>
-  h5: CreateStyled<React.HTMLAttributes<HTMLHeadingElement>>
-  h6: CreateStyled<React.HTMLAttributes<HTMLHeadingElement>>
-  head: CreateStyled<React.HTMLAttributes<HTMLHeadElement>>
-  hr: CreateStyled<React.HTMLAttributes<HTMLHRElement>>
-  html: CreateStyled<React.HTMLAttributes<HTMLHtmlElement>>
-  iframe: CreateStyled<React.IframeHTMLAttributes<HTMLIFrameElement>>
-  img: CreateStyled<React.ImgHTMLAttributes<HTMLImageElement>>
-  input: CreateStyled<React.InputHTMLAttributes<HTMLInputElement>>
-  ins: CreateStyled<React.InsHTMLAttributes<HTMLModElement>>
-  label: CreateStyled<React.LabelHTMLAttributes<HTMLLabelElement>>
-  legend: CreateStyled<React.HTMLAttributes<HTMLLegendElement>>
-  li: CreateStyled<React.LiHTMLAttributes<HTMLLIElement>>
-  link: CreateStyled<React.LinkHTMLAttributes<HTMLLinkElement>>
-  map: CreateStyled<React.MapHTMLAttributes<HTMLMapElement>>
-  marquee: CreateStyled<React.HTMLAttributes<HTMLMarqueeElement>>
-  menu: CreateStyled<React.MenuHTMLAttributes<HTMLMenuElement>>
-  meta: CreateStyled<React.MetaHTMLAttributes<HTMLMetaElement>>
-  meter: CreateStyled<React.MeterHTMLAttributes<HTMLMeterElement>>
-  object: CreateStyled<React.ObjectHTMLAttributes<HTMLObjectElement>>
-  ol: CreateStyled<React.OlHTMLAttributes<HTMLOListElement>>
-  optgroup: CreateStyled<React.OptgroupHTMLAttributes<HTMLOptGroupElement>>
-  option: CreateStyled<React.OptionHTMLAttributes<HTMLOptionElement>>
-  output: CreateStyled<React.OutputHTMLAttributes<HTMLOutputElement>>
-  p: CreateStyled<React.HTMLAttributes<HTMLParagraphElement>>
-  param: CreateStyled<React.ParamHTMLAttributes<HTMLParamElement>>
-  picture: CreateStyled<React.HTMLAttributes<HTMLPictureElement>>
-  pre: CreateStyled<React.HTMLAttributes<HTMLPreElement>>
-  progress: CreateStyled<React.ProgressHTMLAttributes<HTMLProgressElement>>
-  q: CreateStyled<React.HTMLAttributes<HTMLQuoteElement>>
-  script: CreateStyled<React.ScriptHTMLAttributes<HTMLScriptElement>>
-  select: CreateStyled<React.SelectHTMLAttributes<HTMLSelectElement>>
-  slot: CreateStyled<React.HTMLAttributes<HTMLSlotElement>>
-  source: CreateStyled<React.SourceHTMLAttributes<HTMLSourceElement>>
-  span: CreateStyled<React.HTMLAttributes<HTMLSpanElement>>
-  style: CreateStyled<React.StyleHTMLAttributes<HTMLStyleElement>>
-  table: CreateStyled<React.TableHTMLAttributes<HTMLTableElement>>
-  tbody: CreateStyled<React.HTMLAttributes<HTMLTableSectionElement>>
-  td: CreateStyled<React.TdHTMLAttributes<HTMLTableDataCellElement>>
-  template: CreateStyled<React.HTMLAttributes<HTMLTemplateElement>>
-  textarea: CreateStyled<React.TextareaHTMLAttributes<HTMLTextAreaElement>>
-  tfoot: CreateStyled<React.HTMLAttributes<HTMLTableSectionElement>>
-  th: CreateStyled<React.ThHTMLAttributes<HTMLTableHeaderCellElement>>
-  thead: CreateStyled<React.HTMLAttributes<HTMLTableSectionElement>>
-  time: CreateStyled<React.TimeHTMLAttributes<HTMLTimeElement>>
-  title: CreateStyled<React.HTMLAttributes<HTMLTitleElement>>
-  tr: CreateStyled<React.HTMLAttributes<HTMLTableRowElement>>
-  track: CreateStyled<React.TrackHTMLAttributes<HTMLTrackElement>>
-  ul: CreateStyled<React.HTMLAttributes<HTMLUListElement>>
-  video: CreateStyled<React.VideoHTMLAttributes<HTMLVideoElement>>
-} & Record<GenericElementType, CreateStyled<React.HTMLAttributes<HTMLElement>>>
+export type CrockpotElementMap = {
+  a: CreateCrockpotElement<React.AnchorHTMLAttributes<HTMLAnchorElement>>
+  applet: CreateCrockpotElement<React.HTMLAttributes<HTMLAppletElement>>
+  area: CreateCrockpotElement<React.AreaHTMLAttributes<HTMLAreaElement>>
+  audio: CreateCrockpotElement<React.AudioHTMLAttributes<HTMLAudioElement>>
+  base: CreateCrockpotElement<React.BaseHTMLAttributes<HTMLBaseElement>>
+  basefont: CreateCrockpotElement<React.HTMLAttributes<HTMLBaseFontElement>>
+  blockquote: CreateCrockpotElement<
+    React.BlockquoteHTMLAttributes<HTMLQuoteElement>
+  >
+  body: CreateCrockpotElement<React.HTMLAttributes<HTMLBodyElement>>
+  br: CreateCrockpotElement<React.HTMLAttributes<HTMLBRElement>>
+  button: CreateCrockpotElement<React.ButtonHTMLAttributes<HTMLButtonElement>>
+  canvas: CreateCrockpotElement<React.CanvasHTMLAttributes<HTMLCanvasElement>>
+  caption: CreateCrockpotElement<React.HTMLAttributes<HTMLTableCaptionElement>>
+  col: CreateCrockpotElement<React.ColHTMLAttributes<HTMLTableColElement>>
+  colgroup: CreateCrockpotElement<
+    React.ColgroupHTMLAttributes<HTMLTableColElement>
+  >
+  data: CreateCrockpotElement<React.DataHTMLAttributes<HTMLDataElement>>
+  datalist: CreateCrockpotElement<React.HTMLAttributes<HTMLDataListElement>>
+  del: CreateCrockpotElement<React.DelHTMLAttributes<HTMLModElement>>
+  details: CreateCrockpotElement<
+    React.DetailsHTMLAttributes<HTMLDetailsElement>
+  >
+  dialog: CreateCrockpotElement<React.DialogHTMLAttributes<HTMLDialogElement>>
+  dir: CreateCrockpotElement<React.HTMLAttributes<HTMLDirectoryElement>>
+  div: CreateCrockpotElement<React.HTMLAttributes<HTMLDivElement>>
+  dl: CreateCrockpotElement<React.HTMLAttributes<HTMLDListElement>>
+  embed: CreateCrockpotElement<React.EmbedHTMLAttributes<HTMLEmbedElement>>
+  fieldset: CreateCrockpotElement<
+    React.FieldsetHTMLAttributes<HTMLFieldSetElement>
+  >
+  figcaption: CreateCrockpotElement<React.HTMLAttributes<HTMLElement>>
+  font: CreateCrockpotElement<React.HTMLAttributes<HTMLFontElement>>
+  form: CreateCrockpotElement<React.FormHTMLAttributes<HTMLFormElement>>
+  frame: CreateCrockpotElement<React.HTMLAttributes<HTMLFrameElement>>
+  frameset: CreateCrockpotElement<React.HTMLAttributes<HTMLFrameSetElement>>
+  h1: CreateCrockpotElement<React.HTMLAttributes<HTMLHeadingElement>>
+  h2: CreateCrockpotElement<React.HTMLAttributes<HTMLHeadingElement>>
+  h3: CreateCrockpotElement<React.HTMLAttributes<HTMLHeadingElement>>
+  h4: CreateCrockpotElement<React.HTMLAttributes<HTMLHeadingElement>>
+  h5: CreateCrockpotElement<React.HTMLAttributes<HTMLHeadingElement>>
+  h6: CreateCrockpotElement<React.HTMLAttributes<HTMLHeadingElement>>
+  head: CreateCrockpotElement<React.HTMLAttributes<HTMLHeadElement>>
+  hr: CreateCrockpotElement<React.HTMLAttributes<HTMLHRElement>>
+  html: CreateCrockpotElement<React.HTMLAttributes<HTMLHtmlElement>>
+  iframe: CreateCrockpotElement<React.IframeHTMLAttributes<HTMLIFrameElement>>
+  img: CreateCrockpotElement<React.ImgHTMLAttributes<HTMLImageElement>>
+  input: CreateCrockpotElement<React.InputHTMLAttributes<HTMLInputElement>>
+  ins: CreateCrockpotElement<React.InsHTMLAttributes<HTMLModElement>>
+  label: CreateCrockpotElement<React.LabelHTMLAttributes<HTMLLabelElement>>
+  legend: CreateCrockpotElement<React.HTMLAttributes<HTMLLegendElement>>
+  li: CreateCrockpotElement<React.LiHTMLAttributes<HTMLLIElement>>
+  link: CreateCrockpotElement<React.LinkHTMLAttributes<HTMLLinkElement>>
+  map: CreateCrockpotElement<React.MapHTMLAttributes<HTMLMapElement>>
+  marquee: CreateCrockpotElement<React.HTMLAttributes<HTMLMarqueeElement>>
+  menu: CreateCrockpotElement<React.MenuHTMLAttributes<HTMLMenuElement>>
+  meta: CreateCrockpotElement<React.MetaHTMLAttributes<HTMLMetaElement>>
+  meter: CreateCrockpotElement<React.MeterHTMLAttributes<HTMLMeterElement>>
+  object: CreateCrockpotElement<React.ObjectHTMLAttributes<HTMLObjectElement>>
+  ol: CreateCrockpotElement<React.OlHTMLAttributes<HTMLOListElement>>
+  optgroup: CreateCrockpotElement<
+    React.OptgroupHTMLAttributes<HTMLOptGroupElement>
+  >
+  option: CreateCrockpotElement<React.OptionHTMLAttributes<HTMLOptionElement>>
+  output: CreateCrockpotElement<React.OutputHTMLAttributes<HTMLOutputElement>>
+  p: CreateCrockpotElement<React.HTMLAttributes<HTMLParagraphElement>>
+  param: CreateCrockpotElement<React.ParamHTMLAttributes<HTMLParamElement>>
+  picture: CreateCrockpotElement<React.HTMLAttributes<HTMLPictureElement>>
+  pre: CreateCrockpotElement<React.HTMLAttributes<HTMLPreElement>>
+  progress: CreateCrockpotElement<
+    React.ProgressHTMLAttributes<HTMLProgressElement>
+  >
+  q: CreateCrockpotElement<React.HTMLAttributes<HTMLQuoteElement>>
+  script: CreateCrockpotElement<React.ScriptHTMLAttributes<HTMLScriptElement>>
+  select: CreateCrockpotElement<React.SelectHTMLAttributes<HTMLSelectElement>>
+  slot: CreateCrockpotElement<React.HTMLAttributes<HTMLSlotElement>>
+  source: CreateCrockpotElement<React.SourceHTMLAttributes<HTMLSourceElement>>
+  span: CreateCrockpotElement<React.HTMLAttributes<HTMLSpanElement>>
+  style: CreateCrockpotElement<React.StyleHTMLAttributes<HTMLStyleElement>>
+  table: CreateCrockpotElement<React.TableHTMLAttributes<HTMLTableElement>>
+  tbody: CreateCrockpotElement<React.HTMLAttributes<HTMLTableSectionElement>>
+  td: CreateCrockpotElement<React.TdHTMLAttributes<HTMLTableDataCellElement>>
+  template: CreateCrockpotElement<React.HTMLAttributes<HTMLTemplateElement>>
+  textarea: CreateCrockpotElement<
+    React.TextareaHTMLAttributes<HTMLTextAreaElement>
+  >
+  tfoot: CreateCrockpotElement<React.HTMLAttributes<HTMLTableSectionElement>>
+  th: CreateCrockpotElement<React.ThHTMLAttributes<HTMLTableHeaderCellElement>>
+  thead: CreateCrockpotElement<React.HTMLAttributes<HTMLTableSectionElement>>
+  time: CreateCrockpotElement<React.TimeHTMLAttributes<HTMLTimeElement>>
+  title: CreateCrockpotElement<React.HTMLAttributes<HTMLTitleElement>>
+  tr: CreateCrockpotElement<React.HTMLAttributes<HTMLTableRowElement>>
+  track: CreateCrockpotElement<React.TrackHTMLAttributes<HTMLTrackElement>>
+  ul: CreateCrockpotElement<React.HTMLAttributes<HTMLUListElement>>
+  video: CreateCrockpotElement<React.VideoHTMLAttributes<HTMLVideoElement>>
+} & Record<
+  GenericElementType,
+  CreateCrockpotElement<React.HTMLAttributes<HTMLElement>>
+>

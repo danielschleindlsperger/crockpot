@@ -1,11 +1,13 @@
 import React from 'react'
 import { tagNamesWithGenericProps, tagNamesWithSpecialProps } from './tag-names'
 import { Box } from './box'
-import { Styled } from './types'
+import { CrockpotElementMap } from './types'
 
-const Crockpot: Styled = (tagNamesWithGenericProps as Readonly<string[]>)
+const Crockpot: CrockpotElementMap = (tagNamesWithGenericProps as Readonly<
+  string[]
+>)
   .concat(tagNamesWithSpecialProps as Readonly<string[]>)
-  .reduce<Record<keyof Styled, any>>(
+  .reduce<Record<keyof CrockpotElementMap, any>>(
     (acc, elementType) => ({
       ...acc,
       [elementType]: React.forwardRef<any, any>((props, ref) => (
